@@ -1,0 +1,23 @@
+{
+  "name": "appointment-schedular-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "googleapis": "^144.0.0",
+    "moment": "^2.30.1",
+    "moment-timezone": "^0.5.46",
+    "nodemailer": "^6.9.16",
+    "nodemon": "^3.1.9"
+  }
+}
