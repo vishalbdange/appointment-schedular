@@ -19,7 +19,7 @@ const port = 5000;
 
 // Allow requests from the frontend
 app.use(cors({
-    origin: "http://localhost:3000", // Ensure the protocol and slashes are correct
+    origin: "https://appointment-schedular.onrender.com", // Ensure the protocol and slashes are correct
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true   
