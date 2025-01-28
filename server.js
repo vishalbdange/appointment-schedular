@@ -24,7 +24,7 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
-app.options('/book-appointment', cors());
+app.options('*', cors());
 app.use(cors({ origin: "*" }));
 app.use(bodyParser.json());
 
