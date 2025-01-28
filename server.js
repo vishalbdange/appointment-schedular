@@ -19,12 +19,12 @@ const port = 5000;
 
 // Allow requests from the frontend
 app.use(cors({
-    origin: "https://aakarclinic-appointment.netlify.app", // Ensure the protocol and slashes are correct
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true   
+    origin: 'https://aakarclinic-appointment.netlify.app',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
+app.options('/book-appointment', cors());
 app.use(cors({ origin: "*" }));
 app.use(bodyParser.json());
 
