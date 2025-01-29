@@ -16,7 +16,7 @@ const REFRESH_TOKEN = process.env.REFRESH_TOKEN;
 
 const app = express();
 const port = 5000;
-const client = new MongoClient(process.env.MONGO_URI);
+const client = new MongoClient("mongodb+srv://autismdrmumbai:rooWOqk9NUVHQ4lB@cluster0.d6f4q.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
 let db;
 
 async function connectDB() {
