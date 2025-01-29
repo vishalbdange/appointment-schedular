@@ -16,7 +16,7 @@ const REFRESH_TOKEN = process.env.REFRESH_TOKEN;
 
 const app = express();
 const port = 5000;
-const client = new MongoClient("mongodb+srv://autismdrmumbai:rooWOqk9NUVHQ4lB@cluster0.d6f4q.mongodb.net/appointmentsDB?retryWrites=true&w=majority&appName=Cluster0");
+const client = new MongoClient(`mongodb+srv://autismdrmumbai:${process.env.MONGO_PSWD}@cluster0.d6f4q.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`);
 let db;
 
 async function connectDB() {
@@ -26,6 +26,7 @@ async function connectDB() {
         console.log("Connected to MongoDB");
     } catch (error) {
         console.error("MongoDB Connection Error:", error);
+        console.error(error?.message)
         process.exit(1);
     }
 }
