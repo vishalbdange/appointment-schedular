@@ -29,7 +29,6 @@ async function connectDB() {
         process.exit(1);
     }
 }
-connectDB();
 
 // Allow requests from the frontend
 app.use(cors({
@@ -184,6 +183,9 @@ app.get("/booked-slots", async (req, res) => {
     }
 });
 
-app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
-});
+connectDB().then(()=>{
+    app.listen(port, () => {
+        console.log(`Server running at http://localhost:${port}`);
+    });
+})
+
