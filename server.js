@@ -119,35 +119,35 @@ app.post('/book-appointment', async (req, res) => {
         };
 
         const calendar = google.calendar({ version: 'v3', auth: oauth2Client });
-        // const response = await calendar.events.insert({
-        //     calendarId: 'primary',
-        //     resource: event,
-        //     conferenceDataVersion: 1,
-        // });
+        const response = await calendar.events.insert({
+            calendarId: 'primary',
+            resource: event,
+            conferenceDataVersion: 1,
+        });
         
 
-        // const meetingLink = response.data.hangoutLink; // Extract Google Meet link
-        // console.log(meetingLink)
+        const meetingLink = response.data.hangoutLink; // Extract Google Meet link
+        console.log(meetingLink)
         // Create email content
-        // const emailContent = `
-        //     <h1>Appointment Confirmation</h1>
-        //     <p>Dear ${selectedName},</p>
-        //     <p>Your appointment has been scheduled for ${selectedDate.slice(0, 10)} at ${selectedTime}.</p>
-        //     <p>Join the meeting using this <a href=${meetingLink}>Google Meet Link</a>.</p>
-        //     <p>Thank you for booking with us!</p>
-        //     `;
+        const emailContent = `
+            <h1>Appointment Confirmation</h1>
+            <p>Dear ${selectedName},</p>
+            <p>Your appointment has been scheduled for ${selectedDate.slice(0, 10)} at ${selectedTime}.</p>
+            <p>Join the meeting using this <a href=${meetingLink}>Google Meet Link</a>.</p>
+            <p>Thank you for booking with us!</p>
+            `;
 
-        // const mailOptions = {
-        //     from: "autismdrmumbai@gmail.com",
-        //     to: selectedEmail,
-        //     subject: `Aakar Clinic - Appointment`,
-        //     text: "Sending you Appointment Details",
-        //     html: emailContent,
-        //     headers: { 'x-myheader': 'test header' },
-        // };
+        const mailOptions = {
+            from: "autismdrmumbai@gmail.com",
+            to: selectedEmail,
+            subject: `Aakar Clinic - Appointment`,
+            text: "Sending you Appointment Details",
+            html: emailContent,
+            headers: { 'x-myheader': 'test header' },
+        };
         // Send email
-        // const info = await transporter.sendMail(mailOptions);
-        // console.log('Appointment Details sent: ' + info.response);
+        const info = await transporter.sendMail(mailOptions);
+        console.log('Appointment Details sent: ' + info.response);
 
 
         // Insert new appointment
