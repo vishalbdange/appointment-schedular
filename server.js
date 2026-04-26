@@ -32,10 +32,7 @@ async function connectDB() {
 }
 
 // ─── CORS (single clean config) ───────────────────────────────────────────────
-const allowedOrigins = [
-    'https://aakarclinic-appointment.netlify.app',
-    'http://localhost:3000',
-];
+const allowedOrigins = process.env.ALLOWED_ORIGINS;
 
 const corsOptions = {
     origin: function (origin, callback) {
@@ -185,11 +182,10 @@ app.get("/booked-slots", async (req, res) => {
         console.log("Normalized ISO date:", normalizedDate);
 
         const appointmentsCollection = db.collection("appointments");
-
+        console.log("Fetching booked appointments for date:", normalizedDate);
         const bookedAppointments = await appointmentsCollection
             .find({ date: normalizedDate })
             .toArray();
-
         console.log("Booked appointments:", bookedAppointments);
 
         const bookedSlots = bookedAppointments.map(a => a.time);
